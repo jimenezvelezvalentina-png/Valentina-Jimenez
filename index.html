@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FAF8F5;
+  --dark:#1A1A18;
+  --accent:#2C5F4A;
+  --accent-light:#E8F0ED;
+  --muted:#6B6B62;
+  --border:#E2DDD6;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);line-height:1.6}
+
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,248,245,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;
+}
+.nav-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:500;
+  color:var(--dark);text-decoration:none;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.82rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--accent)}
+
+section{padding:6rem 2.5rem;max-width:960px;margin:0 auto}
+
+#inicio{
+  min-height:88vh;display:flex;flex-direction:column;
+  justify-content:center;padding-top:4rem;
+}
+.hero-tag{
+  display:inline-block;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-light);
+  padding:6px 14px;border-radius:2px;margin-bottom:1.5rem;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,7vw,5.5rem);
+  font-weight:300;line-height:1.05;
+  letter-spacing:-0.02em;
+  margin-bottom:1.5rem;
+}
+.hero-title span{color:var(--accent);font-weight:500}
+.hero-sub{
+  font-size:1.05rem;color:var(--muted);max-width:480px;
+  margin-bottom:2.5rem;font-weight:300;line-height:1.8;
+}
+.btn{
+  display:inline-block;padding:14px 32px;
+  background:var(--dark);color:var(--cream);
+  font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;transition:background 0.2s;
+}
+.btn:hover{background:var(--accent)}
+.btn-outline{
+  background:transparent;color:var(--dark);
+  border:1px solid var(--dark);margin-left:1rem;
+}
+.btn-outline:hover{background:var(--dark);color:var(--cream)}
+.divider{
+  width:48px;height:1px;background:var(--accent);margin:0 0 1rem;
+}
+
+.section-label{
+  font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.75rem;font-weight:500;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:400;
+  margin-bottom:1.5rem;line-height:1.1;
+}
+
+#sobre{background:var(--cream)}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
+.sobre-text p{color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:1.2rem}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.stat-card{
+  padding:1.5rem;border:1px solid var(--border);
+  border-radius:4px;background:#fff;
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.5rem;font-weight:400;color:var(--accent);line-height:1;
+}
+.stat-label{font-size:0.8rem;color:var(--muted);margin-top:4px}
+
+#servicios{background:#F2EFE9}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.service-card{
+  padding:2rem 1.5rem;background:#fff;border-radius:4px;
+  border:1px solid var(--border);transition:box-shadow 0.2s,transform 0.2s;
+}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.07)}
+.service-icon{
+  width:42px;height:42px;background:var(--accent-light);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;
+}
+.service-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.service-name{
+  font-family:'Cormorant Garamond',serif;font-size:1.25rem;
+  font-weight:500;margin-bottom:0.75rem;
+}
+.service-desc{font-size:0.875rem;color:var(--muted);line-height:1.75;font-weight:300}
+
+#proyectos{background:var(--cream)}
+.projects-list{display:grid;gap:1px;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-top:3rem}
+.project-item{
+  background:#fff;padding:1.75rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background 0.15s;cursor:default;
+  border-bottom:1px solid var(--border);
+}
+.project-item:last-child{border-bottom:none}
+.project-item:hover{background:var(--accent-light)}
+.project-name{font-weight:500;font-size:1rem}
+.project-detail{font-size:0.825rem;color:var(--muted);margin-top:2px}
+.project-tag{
+  font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-light);
+  padding:4px 10px;border-radius:2px;white-space:nowrap;
+}
+
+#contacto{background:#1A1A18;color:var(--cream);padding:6rem 2.5rem}
+.contact-inner{max-width:960px;margin:0 auto}
+.contact-inner .section-label{color:#7EC4A8}
+.contact-inner .section-title{color:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start}
+.contact-desc{color:#9E9E90;font-weight:300;line-height:1.9;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.contact-link{
+  display:flex;align-items:center;gap:1rem;
+  padding:1.25rem 1.5rem;
+  border:1px solid rgba(255,255,255,0.1);border-radius:4px;
+  text-decoration:none;color:var(--cream);
+  transition:border-color 0.2s,background 0.2s;
+}
+.contact-link:hover{border-color:#7EC4A8;background:rgba(126,196,168,0.08)}
+.contact-link-icon{
+  width:38px;height:38px;background:rgba(255,255,255,0.07);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.contact-link-icon svg{width:18px;height:18px;stroke:#7EC4A8;fill:none;stroke-width:1.5}
+.contact-link-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:#7EC4A8;margin-bottom:2px}
+.contact-link-val{font-size:0.95rem}
+
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,
+.contact-form textarea{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:4px;padding:14px 16px;
+  color:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.9rem;
+  outline:none;transition:border-color 0.2s;resize:none;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{color:#6B6B62}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:#7EC4A8}
+.contact-form textarea{min-height:120px}
+.btn-light{
+  display:inline-block;padding:14px 32px;background:var(--cream);color:var(--dark);
+  font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background 0.2s;
+}
+.btn-light:hover{background:#7EC4A8}
+
+footer{
+  background:#111110;color:#4A4A44;
+  padding:1.5rem 2.5rem;text-align:center;font-size:0.8rem;letter-spacing:0.04em;
+}
+
+@media(max-width:680px){
+  nav{padding:0 1.25rem}
+  section,#contacto{padding:4rem 1.25rem}
+  .sobre-grid,.contact-grid{grid-template-columns:1fr;gap:2rem}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:2.8rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#inicio" class="nav-brand">Valentina Vélez</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<section id="inicio">
+  <div class="hero-tag">Asesora Contable &amp; Financiera</div>
+  <h1 class="hero-title">Valentina<br/><span>Vélez</span></h1>
+  <p class="hero-sub">Soluciones contables precisas y estratégicas para empresas y personas naturales. Claridad financiera para que tú te enfoques en crecer.</p>
+  <div>
+    <a href="#contacto" class="btn">Trabajemos juntos</a>
+    <a href="#servicios" class="btn btn-outline">Mis servicios</a>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="divider"></div>
+  <p class="section-label">Sobre mí</p>
+  <h2 class="section-title">Contadora con propósito</h2>
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <p>Soy Valentina Vélez, asesora contable con experiencia en acompañar a pequeñas y medianas empresas en el manejo de sus finanzas de forma ordenada, transparente y eficiente.</p>
+      <p>Mi enfoque combina rigor técnico con una comunicación clara: traduzco los números en decisiones inteligentes para tu negocio.</p>
+      <p>Trabajo con emprendedores, profesionales independientes y empresas que buscan no solo cumplir con sus obligaciones, sino también crecer con bases sólidas.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">+5</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">+80</div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Compromiso y puntualidad</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">DIAN</div>
+        <div class="stat-label">Actualizada en normativa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" style="background:#F2EFE9;max-width:100%;padding:6rem 2.5rem">
+<div style="max-width:960px;margin:0 auto">
+  <div class="divider"></div>
+  <p class="section-label">Servicios</p>
+  <h2 class="section-title">¿En qué te puedo ayudar?</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg>
+      </div>
+      <div class="service-name">Contabilidad General</div>
+      <p class="service-desc">Registro y clasificación de operaciones contables, elaboración de estados financieros y balance general.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="service-name">Asesoría Tributaria</div>
+      <p class="service-desc">Declaración de renta, IVA, retención en la fuente y planeación fiscal para personas naturales y jurídicas.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="service-name">Nómina y RRHH</div>
+      <p class="service-desc">Liquidación de nómina, prestaciones sociales, seguridad social y certificados laborales.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="service-name">Facturación Electrónica</div>
+      <p class="service-desc">Implementación y gestión de facturación electrónica bajo los estándares de la DIAN.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="service-name">Revisión Financiera</div>
+      <p class="service-desc">Análisis de indicadores, flujo de caja y recomendaciones para la salud financiera de tu empresa.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="service-name">Consultoría Empresarial</div>
+      <p class="service-desc">Acompañamiento en creación de empresa, organización contable y cumplimiento normativo desde el inicio.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="proyectos">
+  <div class="divider"></div>
+  <p class="section-label">Proyectos</p>
+  <h2 class="section-title">Casos de éxito</h2>
+  <div class="projects-list">
+    <div class="project-item">
+      <div>
+        <div class="project-name">Organización contable — PyME manufacturera</div>
+        <div class="project-detail">Medellín · Restructuración completa de procesos contables y tributarios</div>
+      </div>
+      <span class="project-tag">Contabilidad</span>
+    </div>
+    <div class="project-item">
+      <div>
+        <div class="project-name">Declaración de renta — Profesional independiente</div>
+        <div class="project-detail">Optimización fiscal y recuperación de saldo a favor</div>
+      </div>
+      <span class="project-tag">Tributario</span>
+    </div>
+    <div class="project-item">
+      <div>
+        <div class="project-name">Implementación facturación electrónica</div>
+        <div class="project-detail">Empresa comercial con 15 empleados — migración exitosa a DIAN</div>
+      </div>
+      <span class="project-tag">Facturación</span>
+    </div>
+    <div class="project-item">
+      <div>
+        <div class="project-name">Nómina y seguridad social</div>
+        <div class="project-detail">Gestión mensual para empresa de servicios con 30 colaboradores</div>
+      </div>
+      <span class="project-tag">Nómina</span>
+    </div>
+  </div>
+</section>
+
+<div id="contacto">
+  <div class="contact-inner">
+    <div class="divider" style="background:#7EC4A8"></div>
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">Hablemos de tus finanzas</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-desc">¿Tienes preguntas sobre tu situación contable o tributaria? Estoy aquí para ayudarte. Contáctame por cualquiera de estos canales.</p>
+        <div class="contact-links">
+          <a href="tel:3002578963" class="contact-link">
+            <div class="contact-link-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-link-label">Teléfono / WhatsApp</div>
+              <div class="contact-link-val">300 257 8963</div>
+            </div>
+          </a>
+          <a href="mailto:valen@gmail.es" class="contact-link">
+            <div class="contact-link-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-link-label">Correo electrónico</div>
+              <div class="contact-link-val">valen@gmail.es</div>
+            </div>
+          </a>
+          <a href="https://wa.me/573002578963" class="contact-link" target="_blank">
+            <div class="contact-link-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div>
+              <div class="contact-link-label">WhatsApp directo</div>
+              <div class="contact-link-val">Escríbeme ahora →</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <input type="text" placeholder="Tu nombre"/>
+          <input type="email" placeholder="Tu correo electrónico"/>
+          <input type="text" placeholder="Asunto"/>
+          <textarea placeholder="Cuéntame sobre tu situación contable..."></textarea>
+          <button class="btn-light" onclick="alert('¡Gracias por tu mensaje! Valentina te contactará pronto.')">Enviar mensaje</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 Valentina Vélez · Asesora Contable · Medellín, Colombia
+</footer>
+
+</body>
+</html>
